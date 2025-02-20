@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" id="favicon" href="{% static 'logo1.png' %}" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@100..900&display=swap" rel="stylesheet" />
+    <title>Project Details</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Asap', sans-serif;
+        background-color: #f5f5f5;
+    }
+
+    .project-detail-container {
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-image {
+        max-width: 100%;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .project-description {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .project-description h3 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: red;
+    }
+
+    .project-description p {
+        font-size: 20px;
+        line-height: 1.6;
+        color: black;
+    }
+
+    .back-btn {
+        display: block;
+        margin-top: 20px;
+        padding: 10px 25px;
+        background: red;
+        color: white;
+        font-size: 16px;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .back-btn:hover {
+        background: blue;
+        color: white;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .project-detail-container {
+            max-width: 80%;
+            padding: 15px;
+        }
+
+        .project-description h3 {
+            font-size: 1.8rem;
+        }
+
+        .project-description p {
+            font-size: 18px;
+        }
+
+        .back-btn {
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .project-detail-container {
+            max-width: 90%;
+            padding: 10px;
+        }
+
+        .project-description h3 {
+            font-size: 1.6rem;
+        }
+
+        .project-description p {
+            font-size: 16px;
+        }
+
+        .back-btn {
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .project-detail-container {
+            max-width: 95%;
+            padding: 10px;
+        }
+
+        .project-description h3 {
+            font-size: 1.4rem;
+        }
+
+        .project-description p {
+            font-size: 14px;
+        }
+
+        .back-btn {
+            font-size: 12px;
+        }
+    }
+</style>
+
+<body>
+
+    {% block content %}
+
+    <div class="container project-detail-container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <img src="{{ project.image.url }}" alt="{{ project.name }}" class="project-image img-fluid">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 project-description">
+                <h3>{{ project.name }}</h3>
+                <p>{{ project.description }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                <a href="{% url 'project_list' %}" class="btn back-btn">Back To Projects</a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+</body>
+
+</html>

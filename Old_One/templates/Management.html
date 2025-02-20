@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" id="favicon" href='../static/logo1.png' type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@100..900&display=swap" rel="stylesheet">
+    <title>Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .position-relative img {
+            height: 100vh;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .position-relative img {
+                height: 60vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .position-relative img {
+                height: 50vh;
+            }
+        }
+
+        .intro-paragraph {
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-radius: 8px;
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: "Asap", sans-serif;
+        }
+
+        .intro-paragraph h3 {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: red;
+        }
+
+        .intro-paragraph p {
+            font-size: 1.2rem;
+            font-weight: 600;
+            line-height: 1.8;
+            color: black;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: red;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-start;
+            position: relative;
+            margin: 20px 0;
+        }
+
+        .timeline-item.left {
+            justify-content: flex-start;
+        }
+
+        .timeline-item.right {
+            justify-content: flex-end;
+        }
+
+        .timeline-content {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-family: "Asap", sans-serif;
+            font-weight: 600;
+            width: 45%;
+        }
+
+        .timeline-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 6px;
+        }
+
+        .timeline-item .date {
+            position: absolute;
+            top: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            font-family: "Asap", sans-serif;
+            color: red;
+        }
+
+        .timeline-item.left .timeline-content {
+            margin-left: 50px;
+        }
+
+        .timeline-item.right .timeline-content {
+            margin-right: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline {
+                padding: 0 10px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .timeline-content {
+                width: 90%;
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .timeline-item.left .timeline-content,
+            .timeline-item.right .timeline-content {
+                margin: 10px 0;
+            }
+
+            .timeline::after {
+                left: 30px;
+            }
+
+            .timeline-item .date {
+                font-size: 1.5rem;
+                position: relative;
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .timeline-item {
+                margin: 10px 0;
+            }
+
+            .timeline-content {
+                width: 100%;
+                padding: 15px;
+            }
+
+            .timeline-item .date {
+                font-size: 1.4rem;
+                position: relative;
+                margin-bottom: 15px;
+            }
+
+            .timeline::after {
+                left: 20px;
+            }
+        }
+
+        .right-placeholder,
+        .left-placeholder {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: black;
+            font-size: 2rem;
+            font-style: italic;
+            font-family: "Asap", sans-serif;
+            font-weight: bold;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        .right-placeholder {
+            right: 100px;
+        }
+
+        .left-placeholder {
+            left: 100px;
+        }
+
+        .timeline-item.left .right-placeholder {
+            display: block;
+        }
+
+        .timeline-item.left .left-placeholder {
+            display: none;
+        }
+
+        .timeline-item.right .right-placeholder {
+            display: none;
+        }
+
+        .timeline-item.right .left-placeholder {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+
+            .right-placeholder,
+            .left-placeholder {
+                position: static;
+                transform: none;
+                font-size: 1.4rem;
+                font-style: italic;
+                font-family: "Asap", sans-serif;
+                margin-top: 20px;
+                max-width: 100%;
+                display: block;
+            }
+
+            .timeline {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .timeline-item {
+                width: 100%;
+                margin: 20px 0;
+                position: relative;
+            }
+
+            .timeline-content {
+                width: 90%;
+                margin: 10px 0;
+            }
+
+            .timeline-item.left .right-placeholder,
+            .timeline-item.right .left-placeholder {
+                display: block;
+            }
+
+            .timeline-item.left .left-placeholder,
+            .timeline-item.right .right-placeholder {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            .right-placeholder,
+            .left-placeholder {
+                font-size: 1.2rem;
+                margin: 15px;
+                max-width: 90%;
+                text-align: center;
+            }
+
+            .timeline-item .timeline-content {
+                padding: 15px;
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="included-content">{% include 'Navbar.html' %}</div>
+
+    <div class="position-relative">
+        <img src="../static/Management/MD_Main.jpg" alt="team" class="img-fluid" />
+    </div>
+
+    <div class="intro-paragraph">
+        <h3>Our Management Team</h3>
+        <p> Discover the Key Milestones Achieved by our Dedicated Management Team. From Leadership to Accomplishments,
+            each Milestone represents a Step Forward in our Journey. Explore the Timeline below to see the Impact our
+            Team has made through Dedication & Effort.
+        </p>
+    </div>
+
+    <div class="timeline">
+        {% for item in timeline_items %}
+        <div class="timeline-item {{ item.position }}">
+            {% if item.position == 'left' %}
+            <div class="timeline-content">
+                <div class="date">{{ item.name }}</div>
+                {% if item.image and item.image.url %}
+                <img src="{{ item.image.url }}" alt="Image of {{ item.name }}">
+                {% endif %}
+                <p>{{ item.description }}</p>
+                {% if item.additional_description %}
+                <p>{{ item.additional_description }}</p>
+                {% endif %}
+            </div>
+            {% if item.right_placeholder %}
+            <div class="right-placeholder">
+                <p>{{ item.right_placeholder }}</p>
+            </div>
+            {% endif %}
+            {% elif item.position == 'right' %}
+            {% if item.left_placeholder %}
+            <div class="left-placeholder">
+                <p>{{ item.left_placeholder }}</p>
+            </div>
+            {% endif %}
+            <div class="timeline-content">
+                <div class="date">{{ item.name }}</div>
+                {% if item.image and item.image.url %}
+                <img src="{{ item.image.url }}" alt="Image of {{ item.name }}">
+                {% endif %}
+                <p>{{ item.description }}</p>
+                {% if item.additional_description %}
+                <p>{{ item.additional_description }}</p>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="included-content">{% include 'Footer.html' %}</div>
+
+</body>
+
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" id="favicon" href='../static/logo1.png' type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Our Facilities</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .position-relative img {
+            height: 100vh;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .position-relative img {
+                height: 60vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .position-relative img {
+                height: 50vh;
+            }
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+        }
+
+        .text-overlay h2 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 4px 4px 6px rgba(255, 0, 0, 0.5) !important;
+            animation: fadeInDown 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .paragraph-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem;
+            color: black;
+        }
+
+        .paragraph-container .left-paragraph,
+        .paragraph-container .right-paragraph {
+            width: 47%;
+            background: #f4f4f4;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: "Asap", sans-serif;
+            font-weight: 600;
+            font-size: 1.3rem;
+            line-height: 1.5;
+            text-align: justify;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .services-header {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            font-family: "Asap", sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .service-box {
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-box img {
+            width: 100%;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .service-box:hover img {
+            filter: grayscale(0%);
+            transform: scale(1.1);
+        }
+
+        .service-box p {
+            margin-top: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: red;
+            font-family: "Asap", sans-serif;
+        }
+
+        .quote-section {
+            background-color: #f8f9fa;
+            padding: 2rem 1rem;
+            border-top: 2px solid #ddd;
+            border-bottom: 2px solid #ddd;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .quote-section blockquote {
+            font-family: "Asap", sans-serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            color: black;
+            line-height: 1.8;
+            margin: 0 auto;
+            max-width: 1000px;
+            position: relative;
+        }
+
+        .quote-section p {
+            margin-top: 1rem;
+            font-family: "Asap", sans-serif;
+            font-size: 2rem;
+            font-weight: bold;
+            color: red;
+        }
+
+        @media (max-width: 480px) {
+            .text-overlay h2 {
+                font-size: 2rem;
+            }
+
+            .paragraph-container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .paragraph-container .left-paragraph,
+            .paragraph-container .right-paragraph {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .services-header {
+                font-size: 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .service-box img {
+                width: 100%;
+            }
+
+            .quote-section blockquote {
+                font-size: 1rem;
+            }
+
+            .quote-section p {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .text-overlay h2 {
+                font-size: 3rem;
+            }
+
+            .paragraph-container {
+                flex-direction: column;
+                padding: 1.5rem;
+            }
+
+            .paragraph-container .left-paragraph,
+            .paragraph-container .right-paragraph {
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+
+            .services-header {
+                font-size: 1.8rem;
+                margin: 2.5rem 0;
+            }
+
+            .service-box img {
+                width: 100%;
+            }
+
+            .quote-section blockquote {
+                font-size: 1.3rem;
+            }
+
+            .quote-section p {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="included-content">{% include 'Navbar.html' %}</div>
+
+    <div class="position-relative">
+        <img src="../static/Services/Services_Main.jpg" alt="team" class="img-fluid" />
+        <div class="text-overlay">
+            <h2>Our Facilities</h2>
+        </div>
+    </div>
+
+    <div class="paragraph-container">
+        <div class="left-paragraph">
+            <p>We take Pride in offering a Comprehensive Range of Innovative Solutions designed to meet the Unique
+                Challenges of our Clients. Our services Encompass Strategic Planning, Efficient Project Management,
+                Cutting-edge technology Integration & Result-oriented Execution. With a dedicated team of Highly
+                skilled professionals, We ensure that every project is Executed with Precision, Attention to Detail & a
+                Commitment to Excellence. By understanding your Specific needs, We Craft Tailored Strategies that
+                deliver Exceptional Outcomes, helping you Achieve your Goals Effectively & Efficiently.</p>
+        </div>
+        <div class="right-paragraph">
+            <p>At the Heart of our Services lies a Customer-First Philosophy, Ensuring every project we undertake is
+                aligned with your Vision & Expectations. From Initial Consultation to Final Delivery, We focus on
+                providing measurable value through Innovation, Efficiency & High-quality Standards. Whether you need
+                Advanced Technical Solutions, Expert Advisory Support or end-to-end Project Execution, our team is
+                equipped to deliver unmatched results. We strive to foster long-term partnerships by consistently
+                exceeding Expectations, Empowering your business to Grow, Adapt & Succeed in an ever-changing Landscape.
+            </p>
+        </div>
+    </div>
+
+    <h2 class="services-header">List of Our Services</h2>
+
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="service-box">
+                    <img src="../static/Services/Service1.jpg" alt="Service 1">
+                    <p>Service 1</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-box">
+                    <img src="../static/Services/Service2.jpg" alt="Service 2">
+                    <p>Service 2</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-box">
+                    <img src="../static/Services/Service3.jpg" alt="Service 3">
+                    <p>Service 3</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="service-box">
+                    <img src="../static/Services/Service4.jpg" alt="Service 4">
+                    <p>Service 4</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="quote-section">
+        <blockquote>"Our Unwavering Commitment to Excellence propels us toward Achieving Extraordinary Milestones. Every
+            Project we undertake is not just a Task but a Unique Opportunity to Innovate, Inspire & Create something
+            truly remarkable. With a Steadfast focus on Quality & a Passion for delivering Impactful Results, We
+            Transform Challenges into Achievements."
+        </blockquote>
+        <p>- Our Vision</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <div class="included-content">{% include 'Footer.html' %}</div>
+</body>
+
+</html>

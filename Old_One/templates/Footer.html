@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@100..900&display=swap" rel="stylesheet">
+    <title>Footer</title>
+    <style>
+        .footer {
+            color: white;
+            background-color: #1a1a1a;
+            padding: 50px 20px;
+            position: relative;
+            font-family: "Asap", sans-serif;
+        }
+
+        .footer h3 {
+            color: #f1c40f;
+            margin-bottom: 20px;
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+            color: #dcdcdc;
+        }
+
+        .footer a {
+            color: #f1c40f;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+
+        .footer .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #f1c40f;
+            margin-bottom: 20px;
+        }
+
+        .footer .footer-links,
+        .footer .contact-info {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .footer .footer-links li,
+        .footer .contact-info li {
+            margin-bottom: 10px;
+        }
+
+        .footer .column {
+            margin-bottom: 20px;
+        }
+
+        .footer .address h4 {
+            color: #f1c40f;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .footer .address p {
+            margin-bottom: 5px;
+            color: #dcdcdc;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #f1c40f;
+        }
+
+        @media (min-width: 768px) {
+            .footer .row {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .footer .column {
+                flex: 1;
+                margin: 0 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <footer class="footer mt-4">
+        <div class="row">
+            <div class="column">
+                <div class="logo">XYZ Pvt. Ltd.</div>
+                <p>XYZ Pvt. Ltd. is a private limited company registered under the Companies Act, 1900 by the Ministry
+                    of Corporate Affairs, Govt. of India.</p>
+            </div>
+            <div class="column">
+                <h3>Direct Links</h3>
+                <ul class="footer-links">
+                    <li><a href="{% url 'About' %}">About Us</a></li>
+                    <li><a href="{% url 'Services' %}">Our Services</a></li>
+                    <li><a href="{% url 'Jobs' %}">Career</a></li>
+                    <li><a href="{% url 'Contact' %}">Contact</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>Address</h3>
+                <div class="address">
+                    <h4>Thane (Head-Office)</h4>
+                    <p>Office No. 11, Unique House Complex, Road No. 2, Thane (E), Maharashtra, Pin - 400010</p>
+                    <h4>Bandra (Branch-Office)</h4>
+                    <p>Office No. 1508, Maruti Sadhu Vasant, Off Mumbai Fort Highway, Old-Mumbai, Maharashtra, Pin-400060
+                    </p>
+                </div>
+            </div>
+            <div class="column">
+                <h3>Contact Us</h3>
+                <p>Thane: XYZ.thane@XYZ.in | 022-77777777777</p>
+                <p>Bandra: XYZ.Bandra_branch@XYZ.in</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+           Copyright &copy; 2024 XYZ Pvt Ltd | All Rights Reserved | Designed by Developer
+        </div>
+    </footer>
+</body>
+
+</html>

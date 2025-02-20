@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" id="favicon" href='../static/logo1.png' type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Clients</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .position-relative img {
+            height: 100vh;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        @media (max-width: 768px) {
+            .position-relative img {
+                height: 60vh;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .position-relative img {
+                height: 50vh;
+            }
+        }
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+        }
+
+        .text-overlay h2 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 4px 4px 6px rgba(255, 0, 0, 0.5) !important;
+            animation: fadeInDown 1.5s ease-in-out;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .box-container {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .box {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .box:hover img {
+            transform: scale(1.1);
+        }
+
+        .tooltip-inner {
+            background-color: red;
+            color: white;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            padding: 10px 15px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .tooltip-arrow {
+            border-top-color: red;
+        }
+
+        .tooltip {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .container.text-center.my-4 h3 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: red;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-family: "Asap", sans-serif;
+            padding-bottom: 10px;
+            padding-top: 10px;
+        }
+
+        @media (max-width: 480px) {
+            .box-container {
+                grid-template-columns: 1fr;
+            }
+
+            .text-overlay h2 {
+                font-size: 2rem;
+            }
+
+            .container.text-center.my-4 h3 {
+                font-size: 1.5rem;
+            }
+
+            .tooltip-inner {
+                font-size: 1rem;
+                padding: 8px 12px;
+            }
+
+            .box img {
+                height: 200px;
+                object-fit: cover;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .box-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .container.text-center.my-4 h3 {
+                font-size: 2rem;
+            }
+
+            .text-overlay h2 {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="included-content">{% include 'Navbar.html' %}</div>
+
+    <div class="position-relative">
+        <img src="../static/Clients/Clients_Main.jpg" alt="team" class="img-fluid" />
+        <div class="text-overlay">
+            <h2>Clients</h2>
+        </div>
+    </div>
+
+    <div class="container text-center my-4">
+        <h3>Public Clients</h3>
+    </div>
+
+    <div class="container box-container">
+        {% for client in public_clients %}
+        <div class="box" data-toggle="tooltip" title="{{ client.name }}">
+            <img src="{{ client.image.url }}" alt="{{ client.name }}" />
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="container text-center my-4">
+        <h3>Private Clients</h3>
+    </div>
+
+    <div class="container box-container">
+        {% for client in private_clients %}
+        <div class="box" data-toggle="tooltip" title="{{ client.name }}">
+            <img src="{{ client.image.url }}" alt="{{ client.name }}" />
+        </div>
+        {% endfor %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+
+    <div class="included-content">{% include 'Footer.html' %}</div>
+
+</body>
+
+</html>

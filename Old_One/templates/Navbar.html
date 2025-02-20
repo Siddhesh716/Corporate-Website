@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="icon" id="favicon" href="../static/logo1.png" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<style>
+  body,
+  html {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #343a40;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+  }
+
+  .navbar-brand img {
+    max-height: 50px;
+    width: auto;
+  }
+
+  .navbar-nav .nav-item {
+    margin-right: 15px;
+  }
+
+  .navbar-nav .nav-link {
+    color: white !important;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .navbar-nav .nav-link:hover {
+    background-color: white;
+    color: black !important;
+  }
+
+  .navbar-toggler {
+    border: none;
+    outline: none;
+  }
+
+  .navbar-toggler-icon {
+    background-color: #f8f9fa;
+    border-radius: 2px;
+  }
+
+  .navbar-collapse {
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 992px) {
+    .navbar-collapse {
+      background-color: #343a40;
+      padding: 10px 15px;
+    }
+
+    .navbar-nav .nav-item {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+
+    .navbar-nav .nav-link {
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  #progressBar {
+    position: fixed;
+    top: 0;
+    height: 4px;
+    background-color: #f1c40f;
+    z-index: 9999;
+  }
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/"><img src="../static/logo1.png" alt="Logo" /></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Management' %}">Management</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'project_list' %}">Projects & Work</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Services' %}">Our Facilities</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Clients' %}">Clients</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Achievements' %}">Accomplishment</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'About' %}">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Jobs' %}">Career</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'Contact' %}">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div id="progressBar"></div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    window.onscroll = function () {
+      updateProgressBar();
+    };
+
+    function updateProgressBar() {
+      var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      var scrolled = (winScroll / height) * 100;
+      document.getElementById('progressBar').style.width = scrolled + '%';
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="icon" id="favicon" href='../static/logo1.png' type="image/x-icon">
+    <title>Career</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+        }
+
+        .video-container .header-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            font-size: 3.5rem;
+            font-weight: bolder;
+            text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.6);
+        }
+
+        .cta-buttons {
+            margin-top: 1.5rem;
+        }
+
+        .cta-buttons .btn {
+            padding: 0.8rem 1.5rem;
+            color: white;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            font-family: "Asap", sans-serif;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .cta-buttons .btn:hover {
+            background-color: red;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        #job-highlights {
+            padding: 2rem;
+            text-align: center;
+            background: #f4f4f4;
+            border-top: 2px solid #ddd;
+            border-bottom: 2px solid #ddd;
+        }
+
+        #job-highlights h2 {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: red;
+            margin-bottom: 1rem;
+            font-family: "Asap", sans-serif;
+        }
+
+        #job-highlights p {
+            font-size: 1.2rem;
+            font-family: "Asap", sans-serif;
+            color: black;
+            margin-bottom: 2rem;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #job-list {
+            display: none;
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        #job-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        #job-list ul li {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            background: #f1f1f1;
+            border-radius: 5px;
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 400px;
+            width: 80%;
+        }
+
+        .modal-content p {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .modal-content .close-btn {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .office-tour {
+            margin: 2rem auto;
+            text-align: center;
+            max-width: 800px;
+        }
+
+        .office-tour h2 {
+            margin-bottom: 1rem;
+            font-family: "Asap", sans-serif;
+            color: red;
+            font-weight: bold;
+        }
+
+        .office-tour video {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        .office-tour-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .office-culture-description {
+            flex: 1;
+            margin-right: 2rem;
+            font-size: 1.1rem;
+            color: black;
+            text-align: justify;
+        }
+
+        .office-video {
+            flex: 1;
+            max-width: 50%;
+        }
+
+        .office-video video {
+            width: 100%;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .video-container .header-text {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .cta-buttons .btn {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .modal-content {
+                padding: 1.5rem;
+                width: 90%;
+            }
+
+            .modal-content p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-container .header-text {
+                font-size: 1.8rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 0.3rem;
+            }
+
+            .cta-buttons .btn {
+                font-size: 0.8rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .modal-content {
+                padding: 1rem;
+                width: 95%;
+            }
+
+            .modal-content p {
+                font-size: 0.9rem;
+            }
+
+            #job-list {
+                padding: 0.5rem;
+            }
+
+            #job-list ul li {
+                font-size: 0.9rem;
+                padding: 0.4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .office-tour-content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .office-culture-description {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+                font-size: 1rem;
+            }
+
+            .office-video {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .office-tour h2 {
+                font-size: 1.5rem;
+            }
+
+            .office-culture-description {
+                font-size: 0.9rem;
+            }
+
+            .office-video {
+                max-width: 100%;
+            }
+        }
+
+        .image-text-content-section {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 3rem auto;
+            padding: 2rem;
+            max-width: 1200px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-with-text {
+            flex: 1;
+            text-align: center;
+        }
+
+        .image-with-text img {
+            width: 80%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .image-caption {
+            font-family: "Asap", sans-serif;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: black;
+        }
+
+        .content-section {
+            flex: 2;
+            padding-left: 2rem;
+        }
+
+        .content-section h2 {
+            font-family: "Asap", sans-serif;
+            font-size: 2rem;
+            color: red;
+            margin-bottom: 1rem;
+        }
+
+        .content-section p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            text-align: justify;
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            .image-text-content-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content-section {
+                padding-left: 0;
+                margin-top: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="included-content">{% include 'Navbar.html' %}</div>
+
+    <div class="video-container">
+        <video id="videoPlayer" class="hero_video" autoplay muted loop>
+            <source src="../static/Career/career1.mp4" type="video/mp4">Your browser does not support the video tag.
+        </video>
+        <div class="header-text">Career</div>
+    </div>
+
+    <section id="job-highlights">
+        <h2>Join Us!!!</h2>
+        <p>Explore exciting Career Opportunities with Us, where Innovation meets Excellence. Join a Dynamic & Supportive
+            team dedicated to Driving Meaningful Change. Grow your Skills & Achieve your Professional Goals in an
+            Inspiring Environment.</p>
+        <div class="cta-buttons">
+            <a class="btn" onclick="showJobList()">View Job Openings</a>
+            <a class="btn" onclick="showModal()">Apply Now</a>
+        </div>
+        <div id="job-list">
+            <h3>Available Job Openings</h3>
+            <ul>
+                {% for job in jobs %}
+                <li>
+                    <strong>{{ job.title }} - {{ job.location }}</strong>
+                    <ul>
+                        {% for line in job.description.splitlines %}
+                        <li>{{ line }}</li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% empty %}
+                <li>No Job Openings Available Currently</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <div class="office-tour">
+        <h2>Our Office</h2>
+        <div class="office-tour-content">
+            <div class="office-culture-description">
+                <p>At our Company, We Foster a Collaborative & Innovative Environment where every Employee is Valued.
+                    Our Office Culture Emphasizes Open Communication, Creativity & Teamwork. We believe in Creating a
+                    Space where Ideas can Thrive & We Encourage Personal & Professional Growth.</p>
+            </div>
+            <div class="office-video">
+                <video controls>
+                    <source src="../static/Career/office_tour.mp4" type="video/mp4">Your browser does not support the
+                    video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-text-content-section">
+        <div class="image-with-text">
+            <img src="../static/Career/unknown.png" alt="Career Image">
+            <p class="image-caption">HR Director</p>
+            <p style="color: red;" class="image-caption">MR. XYZ</p>
+        </div>
+        <div class="content-section">
+            <h2>Message From Our Human Resources Director</h2>
+            <p>At our Company, We are Committed to Fostering an Environment where Innovation meets Opportunity. We
+                recognize your Aspirations & Aim to provide a Dynamic Workplace that Nurtures Creativity, Collaboration
+                & Professional Growth.</p>
+            <p>Join Us on a Journey where your Talents are Valued & your Contributions Leave a lasting Impact on the
+                World. Together, let’s Shape the Future & Achieve Excellence. Your Success is our Success & We are
+                excited to see you Thrive.</p>
+            <p>With a Focus on Personal & Professional Development, We are Dedicated to helping you reach your Full
+                Potential in a Supportive & Empowering Environment.</p>
+            <p>Thanks for Stopping by, Please do not Hesitate to Contact Us with any Questions.</p>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="modal">
+        <div class="modal-content">
+            <p>Send your Resume to: <a href="mailto:careers@company.com">career@company.com</a></p>
+            <button class="close-btn" onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showJobList() {
+            const jobList = document.getElementById('job-list');
+            if (jobList.style.display === 'none' || jobList.style.display === '') {
+                jobList.style.display = 'block';
+            } else {
+                jobList.style.display = 'none';
+            }
+        }
+
+        function showModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+    </script>
+
+    <div class="included-content">
+        {% include 'Footer.html' %}
+    </div>
+
+</body>
+
+</html>
